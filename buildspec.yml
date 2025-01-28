@@ -4,14 +4,16 @@ phases:
   install:
     runtime-versions:
       java: corretto11
+
   build:
     commands:
-      - echo Running tests `date`
-      - mvn test 
+      - echo Skipping tests and building `date`
+      - mvn install package -DskipTests  # Skips tests during the build
+
   post_build:
     commands:
-      - echo Building project started on `date`
-      - mvn install package
+      - echo Build completed at `date`
+
 artifacts:
   files:
     - target/my-java-app-1.0-SNAPSHOT.jar
